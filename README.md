@@ -36,7 +36,7 @@ lp-programming-challenge-1-1625758668.tar.gz
 ```bash
 docker load -i lp-programming-challenge-1-1625758668.tar.gz
 ```
-> Load The Image
+> Run The Image
 
 ```bash
 docker run --rm -p 3123:3123 -ti lp-programming-challenge-1
@@ -53,17 +53,17 @@ cd animal_etl
 
 ```bash
 python -m venv venv
-venv\Scripts\activate  # On Windows
+```
+> activate your virtual environment
+```bash
+venv\Scripts\activate
 ```
 >  Install Poetry and Dependencies
 ```bash
 pip install poetry
 poetry install
 ```
-> activate your virtual environment
-```bash
-venv\Scripts\activate
-```
+
 > Run the ETL pipeline:
 ```bash
 poetry run python animal_etl/main.py
@@ -75,7 +75,7 @@ poetry run python animal_etl/main.py
 ✔ Posted batch 2 of 5
 ...
 🎉 ETL process complete!
-
+```
 > Run Tests
 ```bash
 poetry run pytest
