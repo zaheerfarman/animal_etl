@@ -20,9 +20,67 @@ This project extracts, transforms, and loads animal data from a local API (Docke
 
 ## 🐳 Setup Instructions
 
-### 1. Load Docker Image
+### 1. Download Docker Image
+Manually download the Docker image:
 
-> Replace with the exact name of your downloaded `.tar.gz` file
+🔗 [Download Docker Image (.tar.gz)](https://drive.google.com/file/d/1MNt0fBJAjOu7pODx0HsStDLBemhAgBuR/view?usp=sharing)
+
+Save it as:
+
+```bash
+lp-programming-challenge-1-1625758668.tar.gz
+```
+
+> Load The Image
 
 ```bash
 docker load -i lp-programming-challenge-1-1625758668.tar.gz
+```
+> Load The Image
+
+```bash
+docker run --rm -p 3123:3123 -ti lp-programming-challenge-1
+```
+
+>Clone and Enter Project
+
+
+```bash
+git clone https://github.com/zaheerfarman/animal_etl.git
+cd animal_etl
+```
+> Create Virtual Environment (Optional)
+
+```bash
+python -m venv venv
+venv\Scripts\activate  # On Windows
+```
+>  Install Poetry and Dependencies
+```bash
+pip install poetry
+poetry install
+```
+> activate your virtual environment
+```bash
+venv\Scripts\activate
+```
+> Run the ETL pipeline:
+```bash
+poetry run python animal_etl/main.py
+```
+> You should see logs like:
+```bash
+✔ Retrieved 450 animal IDs
+✔ Posted batch 1 of 5
+✔ Posted batch 2 of 5
+...
+🎉 ETL process complete!
+
+> Run Tests
+```bash
+poetry run pytest
+```
+> Lint with flake8
+```bash
+poetry run flake8 animal_etl/
+```
