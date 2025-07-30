@@ -1,22 +1,30 @@
 name: Python CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-    - name: Install Poetry
-      run: pip install poetry
-    - name: Install dependencies
-      run: poetry install
-    - name: Lint
-      run: poetry run flake8 animal_etl/
-    - name: Test
-      run: poetry run pytest
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Lint with flake8
+        run: poetry run flake8 animal_etl/
+
+      - name: Run tests with pytest
+        run: poetry run pytest
