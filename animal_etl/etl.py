@@ -3,16 +3,18 @@ from .utils import transform_animal
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List
 
+
 def extract_animal_ids() -> List[str]:
     page, ids = 1, []
     while True:
         data = get_animals_page(page)
         if not data:
             break
-        animals = data.get("items", []) 
+        animals = data.get("items", [])
         ids.extend([a['id'] for a in animals])
         page += 1
     return ids
+
 
 def fetch_details_parallel(ids: List[str]) -> List[dict]:
     details = []
@@ -24,6 +26,7 @@ def fetch_details_parallel(ids: List[str]) -> List[dict]:
             except Exception as e:
                 print(f"Error fetching {futures[future]}: {e}")
     return details
+
 
 def etl_process():
     ids = extract_animal_ids()
